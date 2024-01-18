@@ -11,8 +11,6 @@ const int motorPin2 = 5; // IN2 on the L293D
 const int limitSwitchUp = 7; // Upper limit switch
 const int limitSwitchDown = 6; // Lower limit switch
 
-int valve;
-
 void setup() {
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT);
@@ -45,13 +43,9 @@ void handleCommand(char command) {
   switch (command) {
     case 'U': // Command to move up
       moveMotorUp();
-      radio.stopListening();
-      radio.write(valve = ON);
       break;
     case 'D': // Command to move down
       moveMotorDown();
-      radio.stopListening();
-      radio.write(valve = OFF);
       break;
     case 'S': // Command to stop
       stopMotor();
